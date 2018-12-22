@@ -12,3 +12,15 @@ exports.checkEmail = (email, callback) => {
 
   })
 }
+
+
+exports.addUser = (body, callback) => {
+  const sqlstr = 'INSERT INTO `users` SET ?';
+  connection.query(sqlstr, body, (err, data) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, data);
+
+  });
+};
